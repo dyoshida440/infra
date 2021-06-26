@@ -146,7 +146,7 @@ resource "aws_eip" "a" {
   vpc = true
 
   tags = {
-    Name = "test-eip-a"
+    Name = "infra-eip-a"
   }
 }
 
@@ -155,6 +155,6 @@ resource "aws_eip" "c" {
   vpc = true
 
   tags = {
-    Name = "test-eip-c"
+    Name = "infra-eip-c"
   }
 }
