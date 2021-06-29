@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: infra_development
+
+test:
+  <<: *default
+  database: infra_test
+
+production:
+  <<: *default
+  database: infra_production
+  username: root
+  password:  # ansibleで設定したpassword
+  host:  # RDSのエンドポイント
