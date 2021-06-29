@@ -48,4 +48,4 @@ infra/terraform/terraform.tfstate
 infra/terraform/terraform.tfstate.backup
 
 # Ignore database.yml
-./config/database.yml
+/config/database.yml
