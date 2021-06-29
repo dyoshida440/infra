@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このプロジェクトはインフラの構成をTerraform、OS/ミドルウェアの管理をAnsibleを用いて、
+自分のインフラ知識の整理と今後のプロジェクトに活かせる構成のおさらいを目的に作成しています。
 
-Things you may want to cover:
+AWSのインフラ構成図は以下の通りです(created with draw.io)
 
-* Ruby version
+# 手順
+### インフラ構成の手順・コマンド
+1. `$ terraform init`
+2. `$ terraform plan`
+3. `$ terraform apply`
 
-* System dependencies
+※ 削除時 `$ terraform destroy`
+※ tsstateファイルはS3で管理しています。
 
-* Configuration
+### Ansible実行
+1. `$ ansible-playbook -i hosts production.yml`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### EC2へSSH接続(and you need to clone this project)
+1. `$ cp database.yml.sample database.yml`
+2. `$ vim database.yml`add the production db info
+3. add a master.key from local enviroment
+4. `$ bundle install`back to the root directory
+5. `$ export RAILS_ENV=production`
+6. `$ bundle exec rails db:create RAILS_ENV=production`
+7. `$ bundle exec rails db:migrate RAILS_ENV=production`
+8. `$ bundle exec unicorn_rails -c config/unicorn/production.rb -D -E production`
