@@ -17,11 +17,11 @@ AWSのインフラ構成図は以下の通りです(created with draw.io)
 ### Ansible実行
 1. `$ ansible-playbook -i hosts production.yml`
 
-### EC2へSSH接続(and you need to clone this project)
+### EC2へSSH接続
 1. `$ cp database.yml.sample database.yml`
-2. `$ vim database.yml`add the production db info
-3. add a master.key from local enviroment
-4. `$ bundle install`back to the root directory
+2. `$ vim database.yml`(db情報を追加)
+3. ローカル環境からmaster.keyをコピーする
+4. `$ bundle install`
 5. `$ export RAILS_ENV=production`
 6. `$ bundle exec rails db:create RAILS_ENV=production`
 7. `$ bundle exec rails db:migrate RAILS_ENV=production`
